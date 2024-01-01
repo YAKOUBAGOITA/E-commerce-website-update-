@@ -78,6 +78,9 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
               if(isset($_GET['in_brand'])){
                      include('insert_brands.php');
               }
+              if(isset($_GET['in_product'])){
+                     include('insert_products.php');
+              }
               ?>  
         </div>
         
