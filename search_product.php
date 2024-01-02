@@ -39,10 +39,10 @@ include('./functions/common_function.php');
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-0 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="display_all.php">Products</a>
+          <a class="nav-link" href="#">Products</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Register</a>
@@ -59,7 +59,7 @@ include('./functions/common_function.php');
           <a class="nav-link" href="#">Total price:100/-</a>
         </li>
       </ul>
-      <form class="d-flex p-0" action="search_product.php" method="get">
+      <form class="d-flex p-0" action="" method="get">
         <input class="form-control me-0 p-0" type="search" placeholder="Search"
          aria-label="Search" name="search_data">
        <!-- <button class="btn btn-outline-light" type="submit">Search</button>
@@ -101,10 +101,9 @@ include('./functions/common_function.php');
                 <!-- fetching products -->
                 <?php
                 // calling function
-                
-                    getproducts();
+                    search_product();
                     get_unique_categories();
-                    get_unique_brands();
+                    get_unique_brands();   
                 ?>
 
             </div>
@@ -135,12 +134,11 @@ include('./functions/common_function.php');
     </div>
 
     <!-- last child -->
-     <!-- include footer -->
-    <?php 
-      include("./includes/footer.php");
-     ?> 
+    <div class="bg-info p-3 text-center">
+        <p>All rights © reserved Designed by Yakouba_Goita-2023</p>
+    </div>
 
-       <!-- bootstrap js link-->
+    <!-- bootstrap js link-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
