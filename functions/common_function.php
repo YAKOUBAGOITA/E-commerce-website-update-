@@ -8,30 +8,32 @@ include('./includes/connect.php');
         //condition to check isset or not
         if(!isset($_GET['category'])){
               if(!isset($_GET['brand'])){
-       $select_query = "SELECT * FROM `products`order by rand() LIMIT 0,4" ;
+       $select_query = 'SELECT * FROM `products`order by rand() LIMIT 0,4' ;
      
        $result_query = mysqli_query($con, $select_query);
 
        while ($row = mysqli_fetch_assoc($result_query)) {
            $product_id = mysqli_real_escape_string($con, $row['product_id']);
            $product_title = mysqli_real_escape_string($con, $row['product_title']);
-           $product_description = mysqli_real_escape_string($con, $row['product_description']);
+           $product_description = mysqli_real_escape_string($con, 
+           $row['product_description']);
            $product_image1 = $row['product_image1'];
            $product_price = $row['product_price'];
            $category_id = $row['category_id'];
            $brand_id = $row['brand_id'];
           ?>
 
-           <div class="col-md-4 mb-2">
-             <div class="card">
-                 <img src="./admin_area/product_images/<?php echo $product_image1; ?>" 
-                 class="card-img-top" alt="product_title">
-                 <div class="card-body">
-                     <h5 class="card-title"><?php echo $product_title; ?></h5>
-                     <p class="card-text"><?php echo $product_description; ?></p>
-                     <div class="d-flex p-0">
-                         <a href="#" class="btn bg-info">Add to cart</a>
-                         <a href="#" class="btn bg-secondary">View more</a>
+           <div class='col-md-4 mb-2'>
+             <div class='card'>
+                 <img src='./admin_area/product_images/<?php echo $product_image1; ?>' 
+                 class='card-img-top' alt='product_title'>
+                 <div class='card-body'>
+                     <h5 class='card-title'><?php echo $product_title; ?></h5>
+                     <p class='card-text'><?php echo $product_description; ?></p>
+                     <div class='d-flex p-0'>
+                         <a href='#' class='btn bg-info'>Add to cart</a>
+                         <a href="product_details.php?product_id=<?php echo $product_id; ?>"
+                         class='btn bg-secondary'>View more</a>
                      </div>
                  </div>
              </div>
@@ -78,7 +80,8 @@ include('./includes/connect.php');
                     <p class="card-text"><?php echo $product_description; ?></p>
                     <div class="d-flex p-0">
                         <a href="#" class="btn bg-info">Add to cart</a>
-                        <a href="#" class="btn bg-secondary">View more</a>
+                        <a href="product_details.php?product_id=<?php echo $product_id; ?>"
+                          class='btn bg-secondary'>View more</a>
                     </div>
                 </div>
             </div>
@@ -119,7 +122,8 @@ function get_all_product(){
                     <p class="card-text"><?php echo $product_description; ?></p>
                     <div class="d-flex p-0">
                         <a href="#" class="btn bg-info">Add to cart</a>
-                        <a href="#" class="btn bg-secondary">View more</a>
+                        <a href="product_details.php?product_id=<?php echo $product_id; ?>"
+                         class='btn bg-secondary'>View more</a>
                     </div>
                 </div>
             </div>
@@ -148,7 +152,7 @@ function get_unique_brands(){
                available for service</h2>";
        }
       while ($row = mysqli_fetch_assoc($result_query)) {
-          $product_id = mysqli_real_escape_string($con, $row['product_id']);
+          $product_id =mysqli_real_escape_string($con,   $row['product_id']);
           $product_title = mysqli_real_escape_string($con, $row['product_title']);
           $product_description = mysqli_real_escape_string
           ($con, $row['product_description']);
@@ -167,7 +171,8 @@ function get_unique_brands(){
                     <p class="card-text"><?php echo $product_description; ?></p>
                     <div class="d-flex p-0">
                         <a href="#" class="btn bg-info">Add to cart</a>
-                        <a href="#" class="btn bg-secondary">View more</a>
+                        <a href="product_details.php?product_id=<?php echo $product_id; ?>"
+                        class='btn bg-secondary'>View more</a>"
                     </div>
                 </div>
             </div>
@@ -245,7 +250,8 @@ function search_product(){
                            <p class="card-text"><?php echo $product_description; ?></p>
                            <div class="d-flex p-0">
                                <a href="#" class="btn bg-info">Add to cart</a>
-                               <a href="#" class="btn bg-secondary">View more</a>
+                               <a href="product_details.php?product_id=<?php echo $product_id; ?>"
+                                class='btn bg-secondary'>View more</a>
                            </div>
                        </div>
                    </div>
@@ -254,5 +260,72 @@ function search_product(){
              }
          }
        }
+
+       // view details function
+    function view_details(){
+            global $con;  
+            //condition to check isset or not
+            if(isset($_GET['product_id'])){
+            if(!isset($_GET['category'])){
+                  if(!isset($_GET['brand'])){
+                    $product_id=$_GET['product_id'];
+           $select_query = "SELECT * FROM `products` where 
+           product_id=$product_id";
+         
+           $result_query = mysqli_query($con, $select_query);
+           while ($row = mysqli_fetch_assoc($result_query)) {
+               $product_id = mysqli_real_escape_string($con, $row['product_id']);
+               $product_title = mysqli_real_escape_string($con, $row['product_title']);
+               $product_description = mysqli_real_escape_string($con, 
+               $row['product_description']);
+               $product_image1 = $row['product_image1'];
+               $product_image2 = $row['product_image2'];
+               $product_image3 = $row['product_image3'];
+               $product_price = $row['product_price'];
+               $category_id = $row['category_id'];
+               $brand_id = $row['brand_id'];
+              ?>
+               <div class='col-md-4 mb-2'>
+                 <div class='card'>
+                     <img src='./admin_area/product_images/<?php echo $product_image1; ?>' 
+                     class='card-img-top' alt='product_title'>
+                     <div class='card-body'>
+                         <h5 class='card-title'><?php echo $product_title; ?></h5>
+                         <p class='card-text'><?php echo $product_description; ?></p>
+                         <div class='d-flex p-0'>
+                             <a href='#' class='btn bg-info'>Add to cart</a>
+                             <a href="product_details.php?product_id=<?php echo $product_id; ?>"
+                             class='btn bg-secondary'>View more</a>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+
+             <div class='col-md-8'>
+          <!-- related images -->
+          <div class='row'>
+               <div class='col-md-12'>
+                      <h4 class='text-center text-info mb-5'>
+                             Related products</h4>
+               </div>
+               <div class='col-md-6'>
+               <img src='./admin_area/product_images/<?php echo $product_image2; ?>' 
+                 class='card-img-top' alt='$product_title'>
+               </div>
+               <div class='col-md-6'>
+               <img src='./admin_area/product_images/<?php echo $product_image3; ?>' 
+                class='card-img-top' alt='$product_title'>
+               </div>
+                      
+          </div>
+           </div>
+         
+         <?php
+           }
+       }
+      }
+     }
+
+    }
 
     ?>
