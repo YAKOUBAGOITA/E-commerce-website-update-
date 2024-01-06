@@ -1,6 +1,6 @@
 <?php 
 // includind connect file
-include('./includes/connect.php');
+include('C:\Desktop\htdocs\E-Commerce Website\includes\connect.php');
 //getting products
  function getproducts(){
         global $con;  
@@ -30,10 +30,12 @@ include('./includes/connect.php');
                  <div class='card-body'>
                      <h5 class='card-title'><?php echo $product_title; ?></h5>
                      <p class='card-text'><?php echo $product_description; ?></p>
+                     <p class='card-text'> Price:<?php echo $product_price; ?></p>
                      <div class='d-flex p-0'>
-                         <a href='#' class='btn bg-info'>Add to cart</a>
-                         <a href="product_details.php?product_id=<?php echo $product_id; ?>"
-                         class='btn bg-secondary'>View more</a>
+                     <a href='index.php?add_to_cart=<?php echo $product_id ?>'
+                     class='btn bg-info'>Add to cart</a>
+                     <a href="product_details.php?product_id=<?php echo $product_id; ?>"
+                      class='btn bg-secondary'>View more</a>
                      </div>
                  </div>
              </div>
@@ -78,10 +80,12 @@ include('./includes/connect.php');
                 <div class="card-body">
                     <h5 class="card-title"><?php echo $product_title; ?></h5>
                     <p class="card-text"><?php echo $product_description; ?></p>
+                    <p class='card-text'> Price:<?php echo $product_price; ?></p>
                     <div class="d-flex p-0">
-                        <a href="#" class="btn bg-info">Add to cart</a>
-                        <a href="product_details.php?product_id=<?php echo $product_id; ?>"
-                          class='btn bg-secondary'>View more</a>
+                    <a href='index.php?add_to_cart=<?php echo $product_id ?>'
+                    class='btn bg-info'>Add to cart</a>
+                    <a href="product_details.php?product_id=<?php echo $product_id; ?>"
+                     class='btn bg-secondary'>View more</a>
                     </div>
                 </div>
             </div>
@@ -120,10 +124,12 @@ function get_all_product(){
                 <div class="card-body">
                     <h5 class="card-title"><?php echo $product_title; ?></h5>
                     <p class="card-text"><?php echo $product_description; ?></p>
+                    <p class='card-text'> Price:<?php echo $product_price; ?></p>
                     <div class="d-flex p-0">
-                        <a href="#" class="btn bg-info">Add to cart</a>
-                        <a href="product_details.php?product_id=<?php echo $product_id; ?>"
-                         class='btn bg-secondary'>View more</a>
+                    <a href='index.php?add_to_cart=<?php echo $product_id ?>'
+                   class='btn bg-info'>Add to cart</a>
+                   <a href="product_details.php?product_id=<?php echo $product_id; ?>"
+                    class='btn bg-secondary'>View more</a>
                     </div>
                 </div>
             </div>
@@ -169,10 +175,12 @@ function get_unique_brands(){
                 <div class="card-body">
                     <h5 class="card-title"><?php echo $product_title; ?></h5>
                     <p class="card-text"><?php echo $product_description; ?></p>
+                    <p class='card-text'> Price:<?php echo $product_price; ?></p>
                     <div class="d-flex p-0">
-                        <a href="#" class="btn bg-info">Add to cart</a>
-                        <a href="product_details.php?product_id=<?php echo $product_id; ?>"
-                        class='btn bg-secondary'>View more</a>"
+                    <a href='index.php?add_to_cart=<?php echo $product_id ?>'
+                    class='btn bg-info'>Add to cart</a>
+                    <a href="product_details.php?product_id=<?php echo $product_id; ?>"
+                     class='btn bg-secondary'>View more</a>
                     </div>
                 </div>
             </div>
@@ -248,10 +256,12 @@ function search_product(){
                        <div class="card-body">
                            <h5 class="card-title"><?php echo $product_title; ?></h5>
                            <p class="card-text"><?php echo $product_description; ?></p>
+                           <p class='card-text'> Price:<?php echo $product_price; ?></p>
                            <div class="d-flex p-0">
-                               <a href="#" class="btn bg-info">Add to cart</a>
-                               <a href="product_details.php?product_id=<?php echo $product_id; ?>"
-                                class='btn bg-secondary'>View more</a>
+                           <a href='index.php?add_to_cart=<?php echo $product_id ?>'
+                          class='btn bg-info'>Add to cart</a>
+                          <a href="product_details.php?product_id=<?php echo $product_id; ?>"
+                           class='btn bg-secondary'>View more</a>
                            </div>
                        </div>
                    </div>
@@ -285,17 +295,18 @@ function search_product(){
                $category_id = $row['category_id'];
                $brand_id = $row['brand_id'];
               ?>
-               <div class='col-md-4 mb-2'>
-                 <div class='card'>
-                     <img src='./admin_area/product_images/<?php echo $product_image1; ?>' 
-                     class='card-img-top' alt='product_title'>
-                     <div class='card-body'>
-                         <h5 class='card-title'><?php echo $product_title; ?></h5>
-                         <p class='card-text'><?php echo $product_description; ?></p>
-                         <div class='d-flex p-0'>
-                             <a href='#' class='btn bg-info'>Add to cart</a>
-                             <a href="product_details.php?product_id=<?php echo $product_id; ?>"
-                             class='btn bg-secondary'>View more</a>
+               <div class="col-md-4 mb-2">
+                 <div class="card">
+                     <img src="./admin_area/product_images/<?php echo $product_image1; ?>" 
+                     class="card-img-top" alt="product_title">
+                     <div class="card-body">
+                         <h5 class="card-title"><?php echo $product_title; ?></h5>
+                         <p class="card-text"><?php echo $product_description; ?></p>
+                         <p class='card-text'> Price:<?php echo $product_price; ?></p>
+                         <div class="d-flex p-0">
+                         <a href='index.php?add_to_cart=<?php echo $product_id ?>'
+                         class='btn bg-info'>Add to cart</a>
+                         <a href="index.php" class='btn bg-secondary'>Go home</a>
                          </div>
                      </div>
                  </div>
@@ -328,4 +339,71 @@ function search_product(){
 
     }
 
-    ?>
+    //get ip address function
+    function getIPAddress() {  
+        //whether ip is from the share internet  
+         if(!empty($_SERVER['HTTP_CLIENT_IP'])) {  
+                    $ip = $_SERVER['HTTP_CLIENT_IP'];  
+            }  
+        //whether ip is from the proxy  
+        elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {  
+                    $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];  
+         }  
+    //whether ip is from the remote address  
+        else{  
+                 $ip = $_SERVER['REMOTE_ADDR'];  
+         }  
+         return $ip;  
+    }  
+    //$ip = getIPAddress();  
+    //echo 'User Real IP Address - '.$ip;  
+      
+
+     //cart function
+     // cart function
+function cart() {
+    if (isset($_GET['add_to_cart'])) {
+        global $con;
+        $get_ip_add = getIPAddress();
+        $get_product_id = $_GET['add_to_cart'];
+        $select_query = "SELECT * FROM `cart_details` WHERE ip_address='$get_ip_add'
+         AND product_id=$get_product_id";
+        $result_query = mysqli_query($con, $select_query);
+        $num_of_rows = mysqli_num_rows($result_query);
+
+        if ($num_of_rows > 0) {
+            echo "<script>alert('This item is already present in the cart')</script>";
+            echo "<script>window.open('index.php','_self')</script>";
+        } else {
+            $insert_query = "INSERT INTO `cart_details` (product_id, ip_address, quantity) 
+            VALUES ($get_product_id, '$get_ip_add', 0)";
+            $result_insert = mysqli_query($con, $insert_query);
+
+            if ($result_insert) {
+                echo "<script>window.open('index.php','_self')</script>";
+            } else {
+                echo "<script>alert('Failed to add item to cart')</script>";
+            }
+        }
+    }
+}
+
+// function to get cart number
+function cart_item(){
+    if (isset($_GET['add_to_cart'])){
+        global $con;
+        $get_ip_add = getIPAddress();
+        $select_query = "SELECT * FROM `cart_details` WHERE ip_address='$get_ip_add'";
+        $result_query = mysqli_query($con, $select_query);
+        $count_cart_items = mysqli_num_rows($result_query);
+        } else {
+            global $con;
+           $get_ip_add = getIPAddress();
+           $select_query = "SELECT * FROM `cart_details`
+            WHERE ip_address='$get_ip_add'";
+           $result_query = mysqli_query($con, $select_query);
+           $count_cart_items = mysqli_num_rows($result_query);
+        }
+        echo $count_cart_items;
+    }
+?>
