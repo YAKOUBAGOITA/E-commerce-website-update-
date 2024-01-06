@@ -18,7 +18,7 @@ include('C:\Desktop\htdocs\E-Commerce Website\includes\connect.php');
            $product_description = mysqli_real_escape_string($con, 
            $row['product_description']);
            $product_image1 = $row['product_image1'];
-           $product_price = $row['product_price'];
+           $product_price =  $row['product_price'];
            $category_id = $row['category_id'];
            $brand_id = $row['brand_id'];
           ?>
@@ -68,7 +68,7 @@ include('C:\Desktop\htdocs\E-Commerce Website\includes\connect.php');
           $product_title = mysqli_real_escape_string($con, $row['product_title']);
           $product_description = mysqli_real_escape_string($con, $row['product_description']);
           $product_image1 = $row['product_image1'];
-          $product_price = $row['product_price'];
+          $product_price =  $row['product_price'];
           $category_id = $row['category_id'];
           $brand_id = $row['brand_id'];
          ?>
@@ -112,7 +112,7 @@ function get_all_product(){
           $product_title = mysqli_real_escape_string($con, $row['product_title']);
           $product_description = mysqli_real_escape_string($con, $row['product_description']);
           $product_image1 = $row['product_image1'];
-          $product_price = $row['product_price'];
+          $product_price =  $row['product_price'];
           $category_id = $row['category_id'];
           $brand_id = $row['brand_id'];
          ?>
@@ -163,7 +163,7 @@ function get_unique_brands(){
           $product_description = mysqli_real_escape_string
           ($con, $row['product_description']);
           $product_image1 = $row['product_image1'];
-          $product_price = $row['product_price'];
+          $product_price =  $row['product_price'];
           $category_id = $row['category_id'];
           $brand_id = $row['brand_id'];
          ?>
@@ -244,7 +244,7 @@ function search_product(){
                  $product_title = mysqli_real_escape_string($con, $row['product_title']);
                  $product_description = mysqli_real_escape_string($con, $row['product_description']);
                  $product_image1 = $row['product_image1'];
-                 $product_price = $row['product_price'];
+                 $product_price =  $row['product_price'];
                  $category_id = $row['category_id'];
                  $brand_id = $row['brand_id'];
                 ?>
@@ -291,7 +291,7 @@ function search_product(){
                $product_image1 = $row['product_image1'];
                $product_image2 = $row['product_image2'];
                $product_image3 = $row['product_image3'];
-               $product_price = $row['product_price'];
+               $product_price =  $row['product_price'];
                $category_id = $row['category_id'];
                $brand_id = $row['brand_id'];
               ?>
@@ -405,5 +405,25 @@ function cart_item(){
            $count_cart_items = mysqli_num_rows($result_query);
         }
         echo $count_cart_items;
+    }
+
+    // Total price function
+    function total_cart_price(){
+        global $con;  
+        $get_ip_add = getIPAddress();
+        $total_price=0;
+        $cart_query="Select*from`cart_details` where ip_address='$get_ip_add'";
+        $result=mysqli_query($con,$cart_query);
+        while($row=mysqli_fetch_array($result)){
+            $product_id=$row['product_id'];
+            $select_products="Select*from`products`where product_id='$product_id'";
+            $result_products=mysqli_query($con, $select_products);
+            while($row_product_price=mysqli_fetch_array($result_products)){
+              $product_price =array($row_product_price['product_price']);
+              $product_values=array_sum($product_price);
+              $total_price+=$product_values;
+            }
+        }
+      echo $total_price;
     }
 ?>
