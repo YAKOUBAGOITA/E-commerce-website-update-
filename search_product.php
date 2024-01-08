@@ -56,7 +56,7 @@ include('./functions/common_function.php');
           </i><sup><?php cart_item(); ?></sup></a>
         </li>  
         <li class="nav-item">
-          <a class="nav-link" href="#">Total price:100/-</a>
+          <a class="nav-link" href="#">Total price:<?php total_cart_price() ;?> /-</a>
         </li>
       </ul>
       <form class="d-flex p-0" action="" method="get">

@@ -92,6 +92,7 @@ include('./functions/common_function.php');
 <!-- fourth child-table-->
 <div class="container">
        <div class="row">
+        <form action="" method="POST">
               <table class="table table-bordered text-center">
                      <thead>
                          <tr>
@@ -128,16 +129,31 @@ include('./functions/common_function.php');
                             <td><?php echo $product_title; ?></td>
                             <td><img src="./images/<?php echo $product_image1; ?>" alt=""
                              class="cart_img"></td>   
-                            <td><input type="text" name="" id="" class="form-input w-50"></td>   
+                            <td><input type="text" name="qty" id="" class="form-input w-50"></td>  
+                            <?php
+                             $get_ip_add = getIPAddress();
+                             if(isset($_POST['update_cart'])){
+                              $quantities = $_POST['qty'];
+                              $update_cart="update `cart_details` set quantity=$quantities where
+                               ip_address='$get_ip_add'";
+                               $result_products_quantity=mysqli_query($con, $update_cart);
+                               $total_price =$total_price*$quantities;
+                             }
+                            ?>
                             <td><?php echo  $price_table; ?>/-</td>   
-                            <td><input type="checkbox"></td> 
+                            <td><input type="checkbox" name="removeitem[]"
+                             value="<?php echo $product_id ?>">
+                             </td> 
                             <td class="d-flex">
-                              <button class="bg-info p-3 py-2 border-0 mx-3">Update
-                              </button><button class="bg-info p-3 py-2 border-0 mx-3">
-                              Remove</button>
+                            <!--<button class="bg-info p-3 py-2 border-0 mx-3">Update</button> -->
+                            <input type="submit" value="Update Cart" 
+                            class="bg-info p-3 py-2 border-0 mx-3"name="update_cart">
+                              <!--<button class="bg-info p-3 py-2 border-0 mx-3">Remove</button>-->
+                              <input type="submit" value="Remove Cart" 
+                              class="bg-info p-3 py-2 border-0 mx-3"name="remove_cart">
                             </td>  
                             </tr>
-                            <?php
+                            <?php 
                           }
                      }?>
                      </tbody>
@@ -145,7 +161,7 @@ include('./functions/common_function.php');
               <!-- Subtotal -->
               <div class="d-flex mb-3">
                     <h4 class="px-3">Subtotal:
-                     <strong class=text-info>5000/-</strong></h4> 
+                     <strong class=text-info><?php echo $total_price ;?> /-</strong></h4> 
                      <a href="index.php">
                       <button class="bg-info p-3 py-2 border-0 mx-3">
                        Continue Shopping</button>
@@ -157,8 +173,26 @@ include('./functions/common_function.php');
               </div>
        </div>
 </div>
+</form>
+<!-- function to remove item-->
+<?php 
+function remove_cart_item(){
+  global $con;
+  if(isset($_POST['remove_cart'])){
+    foreach($_POST['removeitem'] as $remove_id){
+      echo $remove_id;
+      $delete_query="Delete from `cart_details`
+       where product_id=$remove_id";
+       $run_delete=mysqli_query($con,$delete_query);
+       if($run_delete){
+        echo "<script>window.open('cart.php','_self')</script>";
+       }
+    }
+  }
+}
+echo $remove_item=remove_cart_item();
 
-
+?>
     <!-- last child -->
      <!-- include footer -->
     <?php 

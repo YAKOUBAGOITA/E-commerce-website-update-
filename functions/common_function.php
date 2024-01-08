@@ -256,7 +256,7 @@ function search_product(){
                        <div class="card-body">
                            <h5 class="card-title"><?php echo $product_title; ?></h5>
                            <p class="card-text"><?php echo $product_description; ?></p>
-                           <p class='card-text'> Price:<?php echo $product_price; ?></p>
+                           <p class='card-text'> Price:<?php echo $product_price; ?>/-</p>
                            <div class="d-flex p-0">
                            <a href='index.php?add_to_cart=<?php echo $product_id ?>'
                           class='btn bg-info'>Add to cart</a>
@@ -302,7 +302,7 @@ function search_product(){
                      <div class="card-body">
                          <h5 class="card-title"><?php echo $product_title; ?></h5>
                          <p class="card-text"><?php echo $product_description; ?></p>
-                         <p class='card-text'> Price:<?php echo $product_price; ?></p>
+                         <p class='card-text'> Price:<?php echo $product_price; ?>/-</p>
                          <div class="d-flex p-0">
                          <a href='index.php?add_to_cart=<?php echo $product_id ?>'
                          class='btn bg-info'>Add to cart</a>
