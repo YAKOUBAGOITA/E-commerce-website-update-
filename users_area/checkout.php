@@ -1,7 +1,6 @@
 <!-- connect file-->
 <?php
-include('./includes/connect.php');
-include('./functions/common_function.php');
+include('../includes/connect.php');
 ?>
 
 <!DOCTYPE html>
@@ -10,7 +9,7 @@ include('./functions/common_function.php');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-Commerce Website</title>
+    <title>E-Commerce Website-Checkout Page</title>
 
     <!-- bootstrap css link-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -49,15 +48,7 @@ include('./functions/common_function.php');
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Contacts</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping">
-
-          </i><sup><?php cart_item(); ?></sup></a>
-        </li>  
-        <li class="nav-item">
-          <a class="nav-link" href="#">Total price:<?php total_cart_price() ;?> /-</a>
-        </li>
+       </li>  
       </ul>
       <form class="d-flex p-0" action="search_product.php" method="get">
         <input class="form-control me-0 p-0" type="search" placeholder="Search"
@@ -72,6 +63,7 @@ include('./functions/common_function.php');
   </div>
 </nav>
 
+
 <!-- second child -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
        <ul class="navbar-nav me-auto">
@@ -79,7 +71,7 @@ include('./functions/common_function.php');
               <a class="nav-link" href="#">Welcome Guest</a>    
             </li>
             <li class="nav-item">   
-              <a class="nav-link" href="./users_area/user_login.php">Login</a>   
+              <a class="nav-link" href="#">Login</a>   
             </li>
        </ul>
 </nav>
@@ -94,48 +86,25 @@ include('./functions/common_function.php');
 
     <!-- fourth child -->
     <div class="row">
-        <div class="col-md-10">
+        <div class="col-md-12">
             <!--Products-->
             <div class="row px-3">
-                <!-- fetching products -->
-                <?php
-                // calling function
-                    view_details();
-                    get_unique_categories();
-                    get_unique_brands();
-                ?>
+              <?php
+               if(!isset($_SESSION['username'])){
+       include('user_login.php');
+               }else{
+                     include('payment.php');
+               }
+               ?>
 
             </div>
-        </div>
-
-        <!-- sidenav -->
-        <div class="col-md-2 bg-secondary p-0">
-            <ul class="navbar-nav me-auto">
-
-                <!-- brands to be displayed -->
-                <li class="nav-item bg-info">
-                    <a href="" class="nav-link">Delivery Brands</a>
-                </li>
-
-                <?php
-            getbrands();
-                ?>
-
-                <!-- categories to be displayed -->
-                <li class="nav-item bg-info">
-                    <a href="" class="nav-link text-center">Categories</a>
-                </li>
-                <?php
-                    getcategories();
-                ?>
-            </ul>
-        </div>
+          </div>
     </div>
 
     <!-- last child -->
      <!-- include footer -->
     <?php 
-      include("./includes/footer.php");
+      include("../includes/footer.php");
      ?> 
 
        <!-- bootstrap js link-->

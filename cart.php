@@ -189,10 +189,11 @@ include('./functions/common_function.php');
                    <input type='submit' value='Continue Shopping'
                    class='bg-info p-3 py-2 border-0 mx-3' name='continue shopping'>
                   </a>
-                  <a href=''>
-                    <button class='bg-secondary p-3 py-2 border-0'>
-                     Checkout</button>
-                 </a>";}else{
+                  
+                    <button class='bg-secondary p-3 py-2 border-0'><a href='./users_area/checkout.php' 
+                    class='text-light text-decoration-none'>Checkout</a></button>";
+                    
+                 }else{
                   echo"<input type='submit' value='Continue Shopping'
                   class='bg-info p-3 py-2 border-0 mx-3'name='continue_shopping'>";
     
