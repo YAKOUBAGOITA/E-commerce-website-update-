@@ -1,6 +1,7 @@
 <!-- connect file-->
 <?php
 include('../includes/connect.php');
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -70,9 +71,17 @@ include('../includes/connect.php');
            <li class="nav-item">   
               <a class="nav-link" href="#">Welcome Guest</a>    
             </li>
-            <li class="nav-item">   
-              <a class="nav-link" href="./users_area/user_login.php">Login</a>   
-            </li>
+            <?php 
+            if(!isset($_SESSION[''])){
+              echo"<li class='nav-item'>   
+              <a class='nav-link' href='./users_area/user_login.php'>Login</a>   
+            </li>";
+            }else{
+              echo"<li class='nav-item'>   
+              <a class='nav-link' href='./users_area/user_logout.php'>Logout</a>   
+            </li>";
+            }
+            ?>
        </ul>
 </nav>
 
