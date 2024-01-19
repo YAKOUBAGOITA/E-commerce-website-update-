@@ -12,7 +12,7 @@ include('../functions/common_function.php');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome <?php echo $_SESSION['username'] ?> </title>
+    <title>Welcome <?php echo isset($_SESSION['username']) ? $_SESSION['username'] : 'Guest'; ?> </title>
 
     <!-- bootstrap css link-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -124,23 +124,32 @@ include('../functions/common_function.php');
            <li class="nav-item bg-info">
               <a class="nav-link text-light" href="#"><h4>Your Profile</h4></a>
             </li> 
+              <?php 
+                $username = isset($_SESSION['username']) ? $_SESSION['username'] : '';
+                $user_image_query = "SELECT * FROM `user_table` WHERE username='$username'";
+                $result_image = mysqli_query($con, $user_image_query);
+                $row_image = mysqli_fetch_array($result_image);
+                $user_image = isset($row_image['user_image']) ? $row_image['user_image'] : 'default_image.jpg';
+                
+                echo "<li class='nav-item'>
+                         <img src='./user_images/$user_image' class='profile_img my-4' alt=''>
+                      </li>";
+              ?>
+              
             <li class="nav-item">
-              <img src="../images/suite1.jpg" class="profile_img my-4" alt="">
+               <a class="nav-link text-light" href="profile.php"><h4>Pending orders</h4></a>
             </li> 
             <li class="nav-item">
-               <a class="nav-link text-light" href="#"><h4>Pending orders</h4></a>
+              <a class="nav-link text-light" href="profile.php?my_orders"><h4>Edit Account</h4></a>
             </li> 
             <li class="nav-item">
-              <a class="nav-link text-light" href="#"><h4>Edit Account</h4></a>
-            </li> 
-            <li class="nav-item">
-              <a class="nav-link text-light" href="#"><h4>My orders</h4></a>
+              <a class="nav-link text-light" href="profile.php?edit_account"><h4>My orders</h4></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-light" href="#"><h4>Delete account</h4></a>
+              <a class="nav-link text-light" href="profile.php?delete_account"><h4>Delete account</h4></a>
             </li> 
             <li class="nav-item">
-              <a class="nav-link text-light" href="#"><h4>Logout</h4></a>
+              <a class="nav-link text-light" href="logout.php"><h4>Logout</h4></a>
             </li>      
          </ul>
        </div>
