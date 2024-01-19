@@ -29,6 +29,7 @@ img{
        width: 7%;
        weight: 7%;
 }
+
 </style>
 <link rel="stylesheet" href="./style.css">
 </head>
@@ -90,14 +91,15 @@ img{
 }else{
   echo"<li class='nav-item'>   
   <a class='nav-link' href='../users_area/logout.php'>Logout</a>  
-</li>";} 
+</li>";}
 ?>
+
        </ul>
 </nav>
 
 <!-- third child -->
-<div class="bg-light">
-       <h3 class="text-center">Hidden Store</h3>
+<div class="bg-light  ">
+       <h6 class="text-center">Pay the way you want!</h6>
        <p class="text-center">Communications is at the heart of 
         e-commerce  and community</p>
 </div>
