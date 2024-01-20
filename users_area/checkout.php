@@ -80,7 +80,7 @@ include('../includes/connect.php');
  </li>";}          
       if(!isset($_SESSION['username'])){
   echo"<li class='nav-item'>   
-  <a class='nav-link' href='./users_area/user_login.php'>Login</a>  
+  <a class='nav-link' href='user_login.php'>Login</a>  
 </li>";
 }else{
   echo"<li class='nav-item'>   
