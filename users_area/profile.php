@@ -32,6 +32,11 @@ include('../functions/common_function.php');
     height: 100%;
     object-fit: contain;
 }
+.edit_image{
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
     </style>
 </head>
 
@@ -124,7 +129,8 @@ include('../functions/common_function.php');
            <li class="nav-item bg-info">
               <a class="nav-link text-light" href="#"><h4>Your Profile</h4></a>
             </li> 
-              <?php 
+              <?php
+              if(isset($_SESSION['username'])){ 
                 $username = isset($_SESSION['username']) ? $_SESSION['username'] : '';
                 $user_image_query = "SELECT * FROM `user_table` WHERE username='$username'";
                 $result_image = mysqli_query($con, $user_image_query);
@@ -134,16 +140,21 @@ include('../functions/common_function.php');
                 echo "<li class='nav-item'>
                          <img src='./user_images/$user_image' class='profile_img my-4' alt=''>
                       </li>";
+              }else{
+                echo "<li class='nav-item'>
+                <img src='./user_images/login1.jpg' class='profile_img my-4' alt=''>
+             </li>";
+              }      
               ?>
               
             <li class="nav-item">
                <a class="nav-link text-light" href="profile.php"><h4>Pending orders</h4></a>
             </li> 
             <li class="nav-item">
-              <a class="nav-link text-light" href="profile.php?my_orders"><h4>Edit Account</h4></a>
+              <a class="nav-link text-light" href="profile.php?edit_account"><h4>Edit Account</h4></a>
             </li> 
             <li class="nav-item">
-              <a class="nav-link text-light" href="profile.php?edit_account"><h4>My orders</h4></a>
+              <a class="nav-link text-light" href="profile.php?my_orders"><h4>My orders</h4></a>
             </li>
             <li class="nav-item">
               <a class="nav-link text-light" href="profile.php?delete_account"><h4>Delete account</h4></a>
@@ -155,7 +166,11 @@ include('../functions/common_function.php');
        </div>
 
        <div class="col-md-10">
-      <?php get_user_order_details(); ?>
+      <?php get_user_order_details();
+      if(isset($_GET['edit_account'])){
+        include('edit_account.php');
+      }
+       ?>
        </div>
 </div>
 

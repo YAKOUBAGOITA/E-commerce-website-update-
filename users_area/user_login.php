@@ -21,6 +21,8 @@ include('../functions/common_function.php');
 
 </head>
 <body>
+
+
        <div class="container-fluid my-3">
              <h2 class="text-center"> User Login</h2> 
              <div class="row d-flex align-items-center justify-content-center">
@@ -51,7 +53,11 @@ include('../functions/common_function.php');
               </div>
              </div>
        </div>
-       
+        <!-- last child -->
+  <!-- include footer -->
+ <?php 
+   include("../includes/footer.php");
+  ?> 
 </body>
 </html>
 
