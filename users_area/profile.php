@@ -1,4 +1,3 @@
-<!-- connect file-->
 <?php
 session_start();
 include('../includes/connect.php');
@@ -28,7 +27,7 @@ include('../functions/common_function.php');
        .profile_img{
     width:90%;
     margin:auto;
-    dispaly:block;
+    display:block;
     height: 100%;
     object-fit: contain;
 }
@@ -132,8 +131,8 @@ include('../functions/common_function.php');
               <?php
               if(isset($_SESSION['username'])){ 
                 $username = isset($_SESSION['username']) ? $_SESSION['username'] : '';
-                $user_image_query = "SELECT * FROM `user_table` WHERE username='$username'";
-                $result_image = mysqli_query($con, $user_image_query);
+                $user_image = "SELECT * FROM `user_table` WHERE username='$username'";
+                $result_image = mysqli_query($con, $user_image);
                 $row_image = mysqli_fetch_array($result_image);
                 $user_image = isset($row_image['user_image']) ? $row_image['user_image'] : 'default_image.jpg';
                 

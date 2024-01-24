@@ -359,7 +359,7 @@ function search_product(){
     //echo 'User Real IP Address - '.$ip;  
       
 
-     //cart function
+     
      // cart function
 function cart() {
     if (isset($_GET['add_to_cart'])) {
