@@ -1,6 +1,6 @@
 <?php 
 // includind connect file
-include('C:\Desktop\htdocs\E-Commerce Website\includes\connect.php');
+include('C:\xampp\htdocs\E-Commerce Website\includes\connect.php');
 //getting products
  function getproducts(){
         global $con;  
