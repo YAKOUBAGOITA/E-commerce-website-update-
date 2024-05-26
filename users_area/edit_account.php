@@ -39,7 +39,8 @@ if(isset($_GET['edit_account'])){
                     WHERE user_id='$update_id'";
     $result_query_update = mysqli_query($con, $update_data);
     if ($result_query_update) {
-      echo "<script>alert('Data updated successfully')</script>";      
+      echo "<script>alert('Data updated successfully')</script>";     
+      echo "<script>window.open ('logout.php', '_self')</script>";
     }
   }
 }
