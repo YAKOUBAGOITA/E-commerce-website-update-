@@ -38,7 +38,7 @@ while($row=mysqli_fetch_assoc($result)){
     echo $rows_count;
    ?></td>
     <td>true</td>
-    <td><a href='index.php?edit_products' class='text-light'><i class='fa-solid fa-pen-to-square'></i></a></td>
+    <td><a href='index.php?edit_products=<?php echo $product_id ?>' class='text-light'><i class='fa-solid fa-pen-to-square'></i></a></td>
     <td><a href='' class='text-light'><i class='fa-solid  fa-trash'></i></a></td>
     </tr>
     <?php
