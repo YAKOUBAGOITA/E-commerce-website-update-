@@ -1,4 +1,7 @@
-
+<?php 
+include('../includes/connect.php');
+include('../functions/common_function.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,9 +15,10 @@
  integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" 
  crossorigin="anonymous">
 
-      <!-- css link -->
-      <link rel="stylesheet" href="../style.css">
+<!-- css link -->
+<link rel="stylesheet" href="../style.css">
 
+      
       <!-- font awesome link-->
       <link rel="stylesheet"
  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" 
@@ -23,7 +27,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
 <body>
-
+       
 <!-- navbar -->
 <div class="container-fluid p-0">
        <!-- first child -->
@@ -56,7 +60,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                    <div class="button text-center p-0 ">
                      <!-- button*10>a.nav-link.text-light.bg-info -->
                      <button class="my-0"><a href="index.php?in_product" class="nav-link text-light bg-info">Insert Products</a></button>
-                     <button class="my-0"><a href="" class="nav-link text-light bg-info">View Products</a></button>
+                     <button class="my-0"><a href="index.php?view_products" class="nav-link text-light bg-info">View Products</a></button>
                      <button class="my-0"><a href="index.php?in_category" class="nav-link text-light bg-info">Insert Categories</a></button>
                      <button class="my-0"><a href="" class="nav-link text-light bg-info">View categories</a></button>
                      <button class="my-0"><a href="index.php?in_brand" class="nav-link text-light bg-info">Insert Brands</a></button>
@@ -81,20 +85,27 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
               if(isset($_GET['in_product'])){
                      include('insert_products.php');
               }
+              if(isset($_GET['view_products'])){
+                     include('view_products.php');
+              }
+              if(isset($_GET['edit_products'])){
+                     include('edit_products.php');
+              }
               ?>  
         </div>
         
-        <!-- last child -->
+        <!-- last child 
         <div class="bg-info p-0 text-center footer">
            <p>All rights © reserved  Designed by Yakouba_Goita-2023</p>
-        </div>  
-
+        </div>  -->
+        <?php 
+      include("../includes/footer.php");
+     ?> 
 </div>     
 
   <!-- bootstrap js link --> 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" 
-integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
+integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 
 crossorigin="anonymous"></script>
-
 </body>
 </html>

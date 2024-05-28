@@ -22,7 +22,7 @@ include('../functions/common_function.php');
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- css link -->
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../style.css"> 
     <style>
        .profile_img{
     width:90%;
@@ -36,12 +36,7 @@ include('../functions/common_function.php');
   height: 100px;
   object-fit: contain;
 }
-.table {
-            background-color:blue ; /* Light grey background for the table */
-        }
-        .table tbody tr {
-            background-color:orange ; /* White background for table rows */
-        }
+
     </style>
 </head>
 
@@ -178,6 +173,9 @@ include('../functions/common_function.php');
         if(isset($_GET['my_orders'])){
          include('user_orders.php');
       }
+      if(isset($_GET['delete_account'])){
+        include('delete_account.php');
+     }
        ?>
        </div>
 </div>
