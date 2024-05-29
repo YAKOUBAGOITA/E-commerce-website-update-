@@ -130,3 +130,57 @@ if(isset($_GET['edit_products'])){
      </div>
     </form>
 </div>
+<!-- editing products -->
+<?php 
+if (isset($_POST['edit_product'])) {
+    $product_title = $_POST['product_title'];
+    $product_desc = $_POST['product_desc'];
+    $product_keywords = $_POST['product_keywords'] ?? '';
+    $product_category = $_POST['product_category'] ?? '';
+    $product_brands = $_POST['product_brands'] ?? '';
+    $product_image1_name = $_FILES['product_image1']['name'] ?? '';
+    $product_image2_name = $_FILES['product_image2']['name'] ?? '';
+    $product_image3_name = $_FILES['product_image3']['name'] ?? '';
+    $product_price = $_POST['product_price'] ?? '';
+
+    $temp_image1 = $_FILES['product_image1']['tmp_name'] ?? '';
+    $temp_image2 = $_FILES['product_image2']['tmp_name'] ?? '';
+    $temp_image3 = $_FILES['product_image3']['tmp_name'] ?? '';
+
+    // Check for empty fields
+    if ($product_title == '' || $product_desc == '' || $product_keywords == '' || 
+        $product_category == '' || $product_brands == '' || 
+        $product_image1_name == '' || $product_image2_name == '' || 
+        $product_image3_name == '' || $product_price == '') {
+        echo "<script>alert('Please fill all the fields')</script>";
+    } else {
+        // Move uploaded files
+        move_uploaded_file($temp_image1, "./product_images/$product_image1_name");
+        move_uploaded_file($temp_image2, "./product_images/$product_image2_name");
+        move_uploaded_file($temp_image3, "./product_images/$product_image3_name");
+
+        // Update query
+        $update_product = "UPDATE `products` SET 
+            product_title='$product_title',
+            product_description='$product_desc', 
+            product_keywords='$product_keywords',
+            category_id='$product_category', 
+            brand_id='$product_brands',
+            product_image1='$product_image1_name', 
+            product_image2='$product_image2_name',
+            product_image3='$product_image3_name', 
+            product_price='$product_price', 
+            date=NOW()
+            WHERE product_id=$edit_id";
+
+        $result_update = mysqli_query($con, $update_product);
+
+        if ($result_update) {
+            echo "<script>alert('Product updated successfully')</script>";
+            echo "<script>window.open('./insert_products.php', '_self' )</script>";
+        } else {
+            echo "Update failed: " . mysqli_error($con);
+        }
+    }
+}
+?>

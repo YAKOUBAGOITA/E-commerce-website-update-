@@ -62,9 +62,9 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                      <button class="my-0"><a href="index.php?in_product" class="nav-link text-light bg-info">Insert Products</a></button>
                      <button class="my-0"><a href="index.php?view_products" class="nav-link text-light bg-info">View Products</a></button>
                      <button class="my-0"><a href="index.php?in_category" class="nav-link text-light bg-info">Insert Categories</a></button>
-                     <button class="my-0"><a href="" class="nav-link text-light bg-info">View categories</a></button>
+                     <button class="my-0"><a href="index.php?view_categories" class="nav-link text-light bg-info">View categories</a></button>
                      <button class="my-0"><a href="index.php?in_brand" class="nav-link text-light bg-info">Insert Brands</a></button>
-                     <button class="my-0"><a href="" class="nav-link text-light bg-info">View Brands</a></button>
+                     <button class="my-0"><a href="index.php?view_brands" class="nav-link text-light bg-info">View Brands</a></button>
                      <button class="my-0"><a href="" class="nav-link text-light bg-info">All orders</a></button>
                      <button class="my-0"><a href="" class="nav-link text-light bg-info">All Payments</a></button>
                      <button class="my-0"><a href="" class="nav-link text-light bg-info">List users</a></button>
@@ -91,6 +91,21 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
               if(isset($_GET['edit_products'])){
                      include('edit_products.php');
               }
+              if(isset($_GET['delete_product'])){
+                     include('delete_product.php');
+              }
+              if(isset($_GET['view_categories'])){
+                     include('view_categories.php');
+              }
+              if(isset($_GET['view_brands'])){
+                     include('view_brands.php');
+              }
+              if(isset($_GET['edit_category'])){
+                     include('edit_category.php');
+              }   
+              if(isset($_GET['edit_brands'])){
+                     include('edit_brands.php');
+              }           
               ?>  
         </div>
         
