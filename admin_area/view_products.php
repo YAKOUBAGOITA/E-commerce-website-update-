@@ -1,6 +1,6 @@
 <h1 class='text-center text-success'>All products</h1>
 <table class='table table-bordered mt-5'>
-<thead class='bg-info custom-input-style'>
+<thead class='bg-info  text-center'>
    <tr>
     <th>Product ID</th>
     <th>Product title</th>
@@ -12,7 +12,7 @@
     <th>Delete</th>
    </tr>
 </thead>
-<tbody class='bg-secondary text-light custom-input-style2'>
+<tbody class='bg-secondary text-light text-center '>
     <?php 
 $get_products='Select*from `products`';
 $result=mysqli_query($con,$get_products);
@@ -38,8 +38,8 @@ while($row=mysqli_fetch_assoc($result)){
     echo $rows_count;
    ?></td>
     <td>true</td>
-    <td><a href='index.php?edit_products=<?php echo $product_id ?>' class='text-light'><i class='fa-solid fa-pen-to-square'></i></a></td>
-    <td><a href='index.php?delete_product=<?php echo $product_id ?>' class='text-light'><i class='fa-solid  fa-trash'></i></a></td>
+    <td><a href='index.php?edit_products=<?php echo $product_id ?>' class='btn btn-primary'><i class='fa-solid fa-pen-to-square'></i></a></td>
+    <td><a href='index.php?delete_product=<?php echo $product_id ?>' class='btn btn-primary'><i class='fa-solid  fa-trash'></i></a></td>
     </tr>
     <?php
 }

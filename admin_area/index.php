@@ -65,7 +65,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                      <button class="my-0"><a href="index.php?view_categories" class="nav-link text-light bg-info">View categories</a></button>
                      <button class="my-0"><a href="index.php?in_brand" class="nav-link text-light bg-info">Insert Brands</a></button>
                      <button class="my-0"><a href="index.php?view_brands" class="nav-link text-light bg-info">View Brands</a></button>
-                     <button class="my-0"><a href="" class="nav-link text-light bg-info">All orders</a></button>
+                     <button class="my-0"><a href="index.php?list_orders" class="nav-link text-light bg-info">All orders</a></button>
                      <button class="my-0"><a href="" class="nav-link text-light bg-info">All Payments</a></button>
                      <button class="my-0"><a href="" class="nav-link text-light bg-info">List users</a></button>
                      <button class="my-0"><a href="" class="nav-link text-light bg-info">Logout</a></button>
@@ -106,6 +106,15 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
               if(isset($_GET['edit_brands'])){
                      include('edit_brands.php');
               }           
+              if(isset($_GET['delete_category'])){
+                     include('delete_category.php');
+              }        
+              if(isset($_GET['delete_brands'])){
+                     include('delete_brands.php');
+              }  
+              if(isset($_GET['list_orders'])){
+                     include('list_orders.php');
+              }                          
               ?>  
         </div>
         
@@ -122,5 +131,11 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
 integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 
 crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
+integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.6/dist/umd/popper.min.js" 
+integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/js/bootstrap.min.js" 
+integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 </body>
 </html>
