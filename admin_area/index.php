@@ -66,8 +66,9 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                      <button class="my-0"><a href="index.php?in_brand" class="nav-link text-light bg-info">Insert Brands</a></button>
                      <button class="my-0"><a href="index.php?view_brands" class="nav-link text-light bg-info">View Brands</a></button>
                      <button class="my-0"><a href="index.php?list_orders" class="nav-link text-light bg-info">All orders</a></button>
-                     <button class="my-0"><a href="" class="nav-link text-light bg-info">All Payments</a></button>
-                     <button class="my-0"><a href="" class="nav-link text-light bg-info">List users</a></button>
+                     <button class="my-0"><a href="index.php?list_payments" class="nav-link text-light bg-info">All Payments</a></button>
+                     <button class="my-0"><a href="index.php?list_users" class="nav-link text-light bg-info">List users</a></button>
+                     <button class="my-0"><a href="index.php?admin_registration" class="nav-link text-light bg-info">Admin Registration</a></button>
                      <button class="my-0"><a href="" class="nav-link text-light bg-info">Logout</a></button>
                    </div>
               </div>
@@ -114,7 +115,27 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
               }  
               if(isset($_GET['list_orders'])){
                      include('list_orders.php');
-              }                          
+              }   
+              if(isset($_GET['list_payments'])){
+                     include('list_payments.php');
+              }    
+              if(isset($_GET['delete_payments'])){
+                     include('delete_payments.php');
+              }   
+              if(isset($_GET['delete_orders'])){
+                     include('delete_orders.php');
+              } 
+              if(isset($_GET['list_users'])){
+                     include('list_users.php');
+              }        
+              if(isset($_GET['delete_users'])){
+                     include('delete_users.php');
+              }                                     
+              if(isset($_GET['admin_registration'])){
+                     include('admin_registration.php');
+              }                            
+              
+
               ?>  
         </div>
         

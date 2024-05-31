@@ -1,44 +1,44 @@
-<h3 class="text-center text-success">All orders</h3>
+<h3 class="text-center text-success">All users</h3>
 <table class="table table-bordered mt-5">            
     <thead class="bg-info">
 <?php
-$get_orders="Select * from `user_orders`";
-$result=mysqli_query($con, $get_orders);
+$get_users="Select * from `user_table`";
+$result=mysqli_query($con, $get_users);
 $row_count=mysqli_num_rows($result);
-echo" <tr class='text-center'>
+
+if($row_count==0){
+   echo "<h2 class='text-danger text-center mt-5'>No user  yet</h2>";
+}else{
+    echo" <tr class='text-center'>
 <th>Sl no</th>
-<th>Due Amount</th>
-<th>Invoice number</th>
-<th>Total products</th>
-<th>Order Date</th>
-<th>Status</th>
+<th>Username</th>
+<th>User email</th>
+<th>User image</th>
+<th>User address</th>
+<th>User mobile</th>
 <th>Delete</th>
 </tr>
 </thead>
 <tbody class='bg-secondary text-light text-center'>";
 
-if($row_count==0){
-   echo "<h2 class='text-danger text-center mt-5'>No orders yet</h2>";
-}else{
     $number=0;
     while($row_data=mysqli_fetch_assoc($result)){
-        $order_id=$row_data['order_id'];
         $user_id=$row_data['user_id'];
-        $amount_due=$row_data['amount_due'];
-        $invoice_number=$row_data['invoice_number'];
-        $total_products=$row_data['total_products'];
-        $order_date=$row_data['order_date'];
-        $order_status=$row_data['order_status'];
+        $username=$row_data['username'];
+        $user_email=$row_data['user_email'];
+        $user_image=$row_data['user_image'];
+        $user_address=$row_data['user_address'];
+        $user_mobile=$row_data['user_mobile'];
         $number++;
         echo"<tr>
         <td>$number</td>
-        <td>$amount_due</td>
-        <td>$invoice_number</td>
-        <td>$total_products</td>
-        <td>$order_date</td>
-        <td>$order_status</td>";
+        <td>$username</td>
+        <td>$user_email</td>
+        <td><img src='../users_area/user_images/$user_image' alt='$username' class='product_img'/></td>;
+        <td>$user_address</td>;
+        <td>$user_mobile</td>";
         ?>
-        <td><a href='index.php?delete_orders=<?php echo $order_id ?>' type="button"
+        <td><a href='index.php?delete_users=<?php echo $user_id ?>' type="button"
          class="btn btn-primary text-light" data-toggle="modal" data-target="#exampleModal">
         <i class='fa-solid  fa-trash'></i></a></td>;
     </tr>";
@@ -58,11 +58,11 @@ if($row_count==0){
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" 
-        data-dismiss="modal"><a href="./index.php?list_orders"
+        data-dismiss="modal"><a href="./index.php?list_users"
         class='text-light text-decoration-none'>No</a>
        </button>
 
-        <button type="button" class="btn btn-primary"><a href='index.php?delete_orders=<?php echo $order_id ?>' 
+        <button type="button" class="btn btn-primary"><a href='index.php?delete_users=<?php echo $user_id ?>' 
          class="text-light text-decoration-none" >Yes</a>
         </button>
       </div>
