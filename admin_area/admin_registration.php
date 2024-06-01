@@ -98,6 +98,7 @@ if (isset($_POST['admin_register'])) {
 
         if ($sql_execute) {
             echo "<script>alert('Registration successful')</script>";
+            echo"<script>window.open('admin_login.php','_self')</script>";
         } else {
             echo "<script>alert('Error: " . mysqli_error($con) . "')</script>";
         }

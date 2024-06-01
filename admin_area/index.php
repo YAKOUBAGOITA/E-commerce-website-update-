@@ -36,9 +36,30 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                     <img src="../images/logo.jpg" alt="" class="logo"> 
                     <nav class="navbar-expand-lg">
                        <ul class="navbar-nav">
-                          <li class="nav-item">
-                            <a href="" class="nav-link">Welcome Guest</a>
-                          </li>
+                          
+                          <a href="index.php?admin_registration" class="nav-link bg-info">Admin-Registration</a>
+                          <?php
+        if(!isset($_SESSION['admin_name'])){
+   echo"<li class='nav-item'>   
+   <a class='nav-link' href='#'>Welcome Guest</a>
+ </li>";
+ }else{
+   echo"<li class='nav-item'>   
+   <a class='nav-link' href='#'>Welcome ".$_SESSION['admin_name']."</a>  
+ </li>";}
+            if(!isset($_SESSION['admin_name'])){
+  echo"<li class='nav-item'>   
+  <a class='nav-link' href='../admin_area/admin_login.php'>Login</a>  
+</li>";
+}else{
+  echo"<li class='nav-item'>   
+  <a class='nav-link' href='../admin_area/admin_logout.php'>Logout</a>  
+</li>";}
+?>
+                          
+                         <!-- <a href="index.php?admin_login" class="nav-link bg-info">Login</a>
+                          <a href="" class="nav-link">Welcome Guest</a> -->
+                          
                         </ul>
                     </nav>
               </div>
@@ -54,8 +75,10 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
               <div class="col-md-12 bg-secondary p-0 d-flex align-items-center">
                   <div>
                    <a href=""><img src="../images/juice.jpg" 
-                   alt="" class="admin_image"></a>    
+                   alt="" class="admin_image"></a> 
+                   <ul>   
                     <p class="text-light text-center">Admin Name</p>
+                    </ul>
                    </div>
                    <div class="button text-center p-0 ">
                      <!-- button*10>a.nav-link.text-light.bg-info -->
@@ -68,8 +91,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                      <button class="my-0"><a href="index.php?list_orders" class="nav-link text-light bg-info">All orders</a></button>
                      <button class="my-0"><a href="index.php?list_payments" class="nav-link text-light bg-info">All Payments</a></button>
                      <button class="my-0"><a href="index.php?list_users" class="nav-link text-light bg-info">List users</a></button>
-                     <button class="my-0"><a href="index.php?admin_registration" class="nav-link text-light bg-info">Admin Registration</a></button>
-                     <button class="my-0"><a href="" class="nav-link text-light bg-info">Logout</a></button>
+                     
                    </div>
               </div>
         </div>
@@ -134,7 +156,9 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
               if(isset($_GET['admin_registration'])){
                      include('admin_registration.php');
               }                            
-              
+              if(isset($_GET['admin_login'])){
+                     include('admin_login.php');
+              }                            
 
               ?>  
         </div>
